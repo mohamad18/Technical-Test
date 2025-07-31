@@ -1,0 +1,14 @@
+model WebhookLog {
+  id             Int       @id @default(autoincrement())
+  webhook        Webhook   @relation(fields: [webhook_id], references: [id])
+  webhook_id     Int
+  booking        Booking   @relation(fields: [booking_id], references: [id])
+  booking_id     Int
+  payload        Json
+  status_code    Int
+  response_body  String
+  attempt        Int
+  sentAt         DateTime  @default(now())
+
+  @@map("webhook_logs")
+}

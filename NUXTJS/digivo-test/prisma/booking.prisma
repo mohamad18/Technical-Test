@@ -1,0 +1,22 @@
+model Booking {
+  id             Int       @id @default(autoincrement())
+  user_id        Int
+  flight_id      Int
+  booking_date   DateTime  @default(now())
+  status         BookingStatus
+  seats_booked   Int
+  created_at     DateTime  @default(now())
+  updated_at     DateTime  @updatedAt
+  webhook_logs   WebhookLog[]
+
+  user          User      @relation(fields: [user_id], references: [id])
+  flight        Flight    @relation(fields: [flight_id], references: [id])
+
+  @@map("bookings")
+}
+
+enum BookingStatus {
+  pending
+  confirmed
+  canceled
+}

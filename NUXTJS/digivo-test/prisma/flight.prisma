@@ -1,0 +1,11 @@
+model Flight {
+  id              Int       @id @default(autoincrement())
+  flight_number   String    @unique
+  origin          String
+  destination     String
+  departure_time  DateTime
+  bookings        Booking[]
+  created_at      DateTime  @default(now())
+
+  @@map("flights")
+}

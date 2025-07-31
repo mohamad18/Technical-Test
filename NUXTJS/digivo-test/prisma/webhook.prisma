@@ -1,0 +1,11 @@
+model Webhook {
+  id          Int       @id @default(autoincrement())
+  url         String
+  event       String
+  secret_key  String
+  is_active   Boolean   @default(true)
+  created_at  DateTime  @default(now())
+  logs        WebhookLog[]
+
+  @@map("webhooks")
+}

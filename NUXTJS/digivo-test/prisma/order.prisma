@@ -1,0 +1,12 @@
+model Order {
+  id          Int      @id @default(autoincrement())
+  produk_id   Int
+  nama_produk String
+  harga       Int
+  kode_unik   String
+  status      String   @default("pending")
+  tanggal     DateTime
+
+  @@unique([tanggal, kode_unik])
+  @@map("orders") // agar sesuai dengan nama tabel asli di database
+}
